@@ -1,76 +1,136 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="movement_forward" id="49" x="31" y="40">
-    <next>
-      <block type="robot_delay" id="67" inline="true">
-        <value name="DELAY">
-          <block type="math_number" id="92">
-            <field name="NUM">4000</field>
-          </block>
-        </value>
+  <block type="controls_whileUntil" id="29" inline="false" x="0" y="16">
+    <field name="MODE">WHILE</field>
+    <value name="NUMBER">
+      <block type="math_number" id="44">
+        <field name="NUM">1</field>
+      </block>
+    </value>
+    <statement name="DO">
+      <block type="movement_forward" id="1">
         <next>
-          <block type="movement_stop" id="102">
+          <block type="robot_delay" id="2" inline="true">
+            <value name="DELAY">
+              <block type="math_number" id="3">
+                <field name="NUM">4000</field>
+              </block>
+            </value>
             <next>
-              <block type="movement_setmotors" id="121" inline="true">
-                <value name="BOTHMOVLEFT">
-                  <block type="math_number" id="157">
-                    <field name="NUM">5</field>
-                  </block>
-                </value>
-                <value name="BOTHMOVRIGHT">
-                  <block type="math_number" id="144">
-                    <field name="NUM">5</field>
-                  </block>
-                </value>
+              <block type="movement_stop" id="4">
                 <next>
-                  <block type="controls_if" id="165" inline="false">
-                    <value name="IF0">
-                      <block type="sensor_object" id="110">
-                        <field name="OBJECT">LEFTFRONT</field>
+                  <block type="movement_setmotors" id="5" inline="true">
+                    <value name="BOTHMOVLEFT">
+                      <block type="math_number" id="6">
+                        <field name="NUM">5</field>
                       </block>
                     </value>
-                    <statement name="DO0">
-                      <block type="movement_reverse" id="189"></block>
-                    </statement>
+                    <value name="BOTHMOVRIGHT">
+                      <block type="math_number" id="7">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
                     <next>
-                      <block type="controls_if" id="196" inline="false">
+                      <block type="controls_if" id="8" inline="false">
                         <value name="IF0">
-                          <block type="sensor_object" id="203">
-                            <field name="OBJECT">RIGHTFRONT</field>
+                          <block type="logic_compare" id="51" inline="true">
+                            <field name="OP">LT</field>
+                            <value name="A">
+                              <block type="sensor_object" id="9">
+                                <field name="OBJECT">LEFTFRONT</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="71">
+                                <field name="NUM">30</field>
+                              </block>
+                            </value>
                           </block>
                         </value>
                         <statement name="DO0">
-                          <block type="movement_reverse" id="220"></block>
+                          <block type="movement_reverse" id="10"></block>
                         </statement>
                         <next>
-                          <block type="controls_if" id="240" inline="false">
+                          <block type="controls_if" id="11" inline="false">
                             <value name="IF0">
-                              <block type="sensor_object" id="227">
-                                <field name="OBJECT">REAR</field>
+                              <block type="logic_compare" id="72" inline="true">
+                                <field name="OP">LT</field>
+                                <value name="A">
+                                  <block type="sensor_object" id="12">
+                                    <field name="OBJECT">RIGHTFRONT</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="74">
+                                    <field name="NUM">30</field>
+                                  </block>
+                                </value>
                               </block>
                             </value>
                             <statement name="DO0">
-                              <block type="movement_forward" id="250"></block>
+                              <block type="movement_reverse" id="13"></block>
                             </statement>
                             <next>
-                              <block type="controls_if" id="280" inline="false">
+                              <block type="controls_if" id="14" inline="false">
                                 <value name="IF0">
-                                  <block type="sensor_object" id="344">
-                                    <field name="OBJECT">LEFTSIDE</field>
+                                  <block type="logic_compare" id="75" inline="true">
+                                    <field name="OP">LT</field>
+                                    <value name="A">
+                                      <block type="sensor_object" id="15">
+                                        <field name="OBJECT">REAR</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="77">
+                                        <field name="NUM">30</field>
+                                      </block>
+                                    </value>
                                   </block>
                                 </value>
                                 <statement name="DO0">
-                                  <block type="movement_right" id="354"></block>
+                                  <block type="movement_forward" id="16"></block>
                                 </statement>
                                 <next>
-                                  <block type="controls_if" id="266" inline="false">
+                                  <block type="controls_if" id="17" inline="false">
                                     <value name="IF0">
-                                      <block type="sensor_object" id="336">
-                                        <field name="OBJECT">RIGHTFRONT</field>
+                                      <block type="logic_compare" id="97" inline="true">
+                                        <field name="OP">LT</field>
+                                        <value name="A">
+                                          <block type="sensor_object" id="18">
+                                            <field name="OBJECT">LEFTSIDE</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="99">
+                                            <field name="NUM">30</field>
+                                          </block>
+                                        </value>
                                       </block>
                                     </value>
                                     <statement name="DO0">
-                                      <block type="movement_left" id="380"></block>
+                                      <block type="movement_right" id="19"></block>
                                     </statement>
+                                    <next>
+                                      <block type="controls_if" id="20" inline="false">
+                                        <value name="IF0">
+                                          <block type="logic_compare" id="100" inline="true">
+                                            <field name="OP">LT</field>
+                                            <value name="A">
+                                              <block type="sensor_object" id="21">
+                                                <field name="OBJECT">RIGHTFRONT</field>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="math_number" id="102">
+                                                <field name="NUM">30</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO0">
+                                          <block type="movement_left" id="22"></block>
+                                        </statement>
+                                      </block>
+                                    </next>
                                   </block>
                                 </next>
                               </block>
@@ -86,6 +146,6 @@
           </block>
         </next>
       </block>
-    </next>
+    </statement>
   </block>
 </xml>
