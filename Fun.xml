@@ -4,11 +4,86 @@
       <block type="robot_delay" id="67" inline="true">
         <value name="DELAY">
           <block type="math_number" id="92">
-            <field name="NUM">2000</field>
+            <field name="NUM">4000</field>
           </block>
         </value>
         <next>
-          <block type="movement_stop" id="102"></block>
+          <block type="movement_stop" id="102">
+            <next>
+              <block type="movement_setmotors" id="121" inline="true">
+                <value name="BOTHMOVLEFT">
+                  <block type="math_number" id="157">
+                    <field name="NUM">5</field>
+                  </block>
+                </value>
+                <value name="BOTHMOVRIGHT">
+                  <block type="math_number" id="144">
+                    <field name="NUM">5</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="165" inline="false">
+                    <value name="IF0">
+                      <block type="sensor_object" id="110">
+                        <field name="OBJECT">LEFTFRONT</field>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="movement_reverse" id="189"></block>
+                    </statement>
+                    <next>
+                      <block type="controls_if" id="196" inline="false">
+                        <value name="IF0">
+                          <block type="sensor_object" id="203">
+                            <field name="OBJECT">RIGHTFRONT</field>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="movement_reverse" id="220"></block>
+                        </statement>
+                        <next>
+                          <block type="controls_if" id="240" inline="false">
+                            <value name="IF0">
+                              <block type="sensor_object" id="227">
+                                <field name="OBJECT">REAR</field>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="movement_forward" id="250"></block>
+                            </statement>
+                            <next>
+                              <block type="controls_if" id="280" inline="false">
+                                <value name="IF0">
+                                  <block type="sensor_object" id="344">
+                                    <field name="OBJECT">LEFTSIDE</field>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="movement_right" id="354"></block>
+                                </statement>
+                                <next>
+                                  <block type="controls_if" id="266" inline="false">
+                                    <value name="IF0">
+                                      <block type="sensor_object" id="336">
+                                        <field name="OBJECT">RIGHTFRONT</field>
+                                      </block>
+                                    </value>
+                                    <statement name="DO0">
+                                      <block type="movement_left" id="380"></block>
+                                    </statement>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
         </next>
       </block>
     </next>
